@@ -1,0 +1,57 @@
+.sec2 {
+  padding: 3vh 0;
+  text-align: center;
+  background: #000; /* 필요하면 배경색 추가 */
+}
+
+/* ── Header ── */
+.header {
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+
+/* border-left와 padding은 h2 한 번만 */
+.header h2 {
+  display: inline-block;
+  margin: 0;
+  padding-left: 0.5rem;
+  border-left: 1px solid #fff;
+  line-height: 0.3; /* 줄간격 조절 */
+}
+/* 첫 번째 줄 */
+.mainLine,
+.subLine {
+  display: block;
+  line-height: 1; /* ← 이게 핵심 */
+  margin: 0; /* span의 기본 여백 제거 */
+}
+
+/* mainLine 스타일 */
+.mainLine {
+  font-size: 18px;
+  font-weight: 350;
+  color: #fff;
+}
+
+/* subLine 스타일 (위 간격만 살짝 남기고 싶으면 margin-top만) */
+.subLine {
+  font-size: 12px;
+  font-weight: 300;
+  color: #ccc;
+}
+
+/* ── 차트 컨테이너 ── */
+.radarContainer {
+  position: relative;
+  width: 100%;
+  max-width: 91%;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.radarContainer canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+}
