@@ -98,6 +98,25 @@ const visual2 = {
     },
   ],
 };
+const visual3 = {
+  heatmap: [
+    {
+      x: 671.95,
+      y: 372.6,
+      r: 10,
+    },
+    {
+      x: 603.4489795918367,
+      y: 436.1020408163265,
+      r: 27,
+    },
+    {
+      x: 610.939393939394,
+      y: 391.42424242424244,
+      r: 18,
+    },
+  ],
+};
 
 export default function App() {
   const [headerIndex, setHeaderIndex] =
@@ -328,9 +347,25 @@ export default function App() {
           );
         return res.json();
       })
+
       .then((data) => {
-        setVisualData(data);
+        // 1) 헤더 인덱스 추출
+        const idx = parseInt(
+          data.visual1.HeaderIndex,
+          10
+        );
+        if (idx >= 1 && idx <= 10) {
+          setHeaderIndex(idx);
+        }
+
+        // 2) 시각화 데이터 저장
+        setVisualData({
+          visual1: data.visual1.scores,
+          visual2: data.visual2.heatmap,
+          visual3: data.visual3.heatmap,
+        });
       })
+
       .catch((err) => {
         console.error(
           "시각화 데이터 로드 실패",
@@ -424,7 +459,7 @@ export default function App() {
 
       <Sec5
         bgImage={bgCluster2}
-        heatmap={visual2.heatmap}
+        heatmap={visual3.heatmap}
         circleColor="rgba(189, 189, 189, 0.85)" // 원 색⋅투명도 변경 가능
         texts={[
           "Color Selection",
