@@ -6,6 +6,8 @@ import React, {
 } from "react";
 import { Helmet } from "react-helmet";
 import "./App.css";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 import { getHeaderConfig } from "./configs/headerConfigs";
 //import Header from "./components/Header";
@@ -127,17 +129,170 @@ export default function App() {
     useState(true);
 
   const radarRef = useRef(null);
+  // 1. 색상별 설명 문구를 미리 매핑하는 객체를 정의
+  const colorTextMap = {
+    white: (
+      <>
+        당신의 시선은 &nbsp;
+        <strong>흰색</strong> 꽃에
+        머물렀습니다. &nbsp;
+        <strong>
+          순수함과 고요한 중심을 향한
+          내면의 열망
+        </strong>
+        이 담겨 있습니다.
+      </>
+    ),
+    blue: (
+      <>
+        당신의 시선은 &nbsp;
+        <strong>파란</strong> 꽃을
+        향했습니다. &nbsp;
+        <strong>
+          깊은 사색과 내면의 평온함
+        </strong>
+        이 느껴집니다.
+      </>
+    ),
+    purple: (
+      <>
+        당신의 시선은 &nbsp;
+        <strong>보라</strong> 꽃에
+        이끌렸습니다. &nbsp;
+        <strong>
+          복합적인 감성과 이성 사이에서
+          내면의 깊이
+        </strong>
+        를 탐색하고 있습니다.
+      </>
+    ),
+    red: (
+      <>
+        당신은 &nbsp;
+        <strong>빨간</strong> 꽃에
+        시선을 멈췄습니다. &nbsp;
+        <strong>
+          도전과 성취를 향한 열정
+        </strong>
+        이 타오르고 있습니다.
+      </>
+    ),
+    yellow: (
+      <>
+        당신은 &nbsp;
+        <strong></strong>노란 꽃에
+        시선을 두었습니다. &nbsp;
+        <strong>
+          희망과 긍정의 에너지가 새로운
+          가능성
+        </strong>
+        을 비추고 있습니다.
+      </>
+    ),
+    orange: (
+      <>
+        당신의 시선은 &nbsp;
+        <strong>주황</strong> 꽃에
+        머물렀습니다. &nbsp;
+        <strong>
+          애정과 진심 어린 교감을 통해
+          내면의 안정
+        </strong>
+        을 추구하고 있습니다.
+      </>
+    ),
+  };
+  const keywordTextMap = {
+    FullyBloomed: (
+      <>
+        자신을 표현하고 싶은 마음이
+        강하게 피어났습니다.
+        <br />
+        <strong>
+          주목받고 싶은 욕망, 사랑받고
+          싶은 바람
+        </strong>
+        이 마음속에서 활짝 퍼지고
+        있군요.
+      </>
+    ),
+    PartiallyBloomed: (
+      <>
+        &nbsp;
+        <strong>
+          설렘과 불안 사이
+        </strong>
+        에서 망설이고 있는 당신. 하지만
+        곧,&nbsp;
+        <strong>
+          당신만의 리듬으로 피어나기
+          시작
+        </strong>
+        할 거예요.
+      </>
+    ),
+    Budding: (
+      <>
+        당신은 아직 &nbsp;
+        <strong>
+          드러나지 않은 감정과 가능성을
+          품고
+        </strong>{" "}
+        있습니다.
+        <br />
+        서서히 피어오를 당신만의
+        이야기가 준비되고 있어요.
+      </>
+    ),
+    Withered: (
+      <>
+        {" "}
+        <strong>
+          마음의 피로와 감정의 소진
+        </strong>
+        이 느껴집니다. 지금의 당신에게는
+        &nbsp;
+        <strong>
+          잠시 쉬어갈 수 있는 위로
+        </strong>
+        가 필요해요.
+      </>
+    ),
+    DetachedBloom: (
+      <>
+        당신은&nbsp;
+        <strong>
+          감정을 억누르며 현실적인
+          선택을 중시
+        </strong>
+        하는 모습입니다.
+        <br />
+        <strong>
+          차분하지만 깊이 있는 내면
+        </strong>
+        이 당신을 지탱하고 있어요.
+      </>
+    ),
+  };
 
   // ─── !! 테스트용 데이터  !!
-  const userFlower = "칼라릴리"; // 예시: 유저가 선택한 꽃의 유형
+  const userFlower = "아네모네"; // 예시: 유저가 선택한 꽃의 유형
   const userColor = "white"; // 예시: 유저가 선택한 꽃의 색상
-  const userType = "scanner";
+  const userType = "focalizer";
+  const userKeyword = "DetachedBloom";
+
+  const gap =
+    "\u00A0\u00A0\u00A0\u00A0\u00A0";
+  const slideText =
+    "Exploring the Unconscious Self";
+  const repeatedText = `${slideText}${gap}${slideText}`;
 
   // 타입과 색상에 맞는 헤더 설정 가져오기
   const headerConfig = getHeaderConfig(
     userFlower,
     userColor,
-    userType
+    userType,
+    userKeyword
   );
 
   console.log(
@@ -152,6 +307,15 @@ export default function App() {
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
   </Helmet>;
+  useEffect(() => {
+    // AOS 옵션: once: true로 주면 한 번 화면에 나타난 후엔 애니메이션 재실행하지 않음
+    AOS.init({
+      duration: 600, // 애니메이션 동작 시간(ms)
+      easing: "ease-out", // 애니메이션 이징 함수
+      once: false, // true로 설정하면, 화면에 한 번 보인 후 스크롤 올렸다 내렸다 해도 재실행 안 함
+      mirror: false, // false면 스크롤 위로 올라가면 애니메이션 초기 상태로 돌아가지 않음
+    });
+  }, []);
 
   /*
   useEffect(() => {
@@ -203,161 +367,242 @@ export default function App() {
 
       {/* Section 1: Short section with a single word */}
       <section className="sec1">
-        Exploring the Unco
+        <div className="X_slide">
+          {slideText}
+        </div>
       </section>
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <Sec2
+          headerLines={[
+            "Internal data classification Type",
+            "당신의 내면의 꽃을 피어낸 데이터 분석 값",
+          ]}
+          scores={visual1.scores}
+        />
+      </div>
 
-      <Sec2
-        headerLines={[
-          "Internal data classification Type",
-          "당신의 내면의 꽃을 피어낸 데이터 분석 값",
-        ]}
-        scores={visual1.scores}
-      />
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <Sec4
+          cells={[
+            {
+              title: "DATA ITEM",
+              text: "무의식 분석을 위한 시선트래킹 데이터 항목",
+            },
+            {
+              text: (
+                <>
+                  영상을 진행하며,
+                  당신의 무의식속 내면
+                  <br />을 반영하는
+                  지표인 시선을
+                  분석했습니다.
+                  <br />
+                  저희가 분석한 시선
+                  데이터의 항목은
+                  <br />
+                  다음과 같습니다.
+                </>
+              ),
+            },
+            {
+              title: "FIXATION TIME",
+              text: "한 지점에 머무르는 평균 시간",
+            },
+            {
+              title: "FIXATION COUNT",
+              text: "전체 분석 구간에서 발생한 시선 고정의 총 개수",
+            },
+            {
+              title: "DISPERSION",
+              text: "시선이 화면 전체에 얼마나 넓게 분포하였는지",
+            },
+            {
+              title: "ZONE DIVERSITY",
+              text: (
+                <>
+                  화면을 여러 영역으로
+                  나누었을 때 얼마나
+                  <br />
+                  다양한 영역을
+                  탐색했는지
+                </>
+              ),
+            },
+            {
+              title:
+                "TRANSITION FREQUENCY",
+              text: "시선이 한 지점에서 다른 지점으로 얼마나 자주 이동하는지",
+            },
+          ]}
+        />
+      </div>
 
-      <Sec4
-        cells={[
-          {
-            title: "DATA ITEM",
-            text: "무의식 유형 분석을 위한\n시선트래킹 데이터 항목",
-            // inline override 가능 (옵션)
-            titleSize: "14px",
-            titleWeight: 400,
-            textSize: "9px",
-            textWeight: 300,
-          },
-          {
-            title: "FIXATION COUNT",
-            text: "전체 분석 구간에서 발생한 시선 고정의 총 개수",
-          },
-          {
-            title: "DISPERSION",
-            text: "시선이 화면 전체에 얼마나 넓게 분포",
-          },
-          {
-            title: "Description",
-            text: "영상 진행 중 무의식 내면을 반영하는 지표를 분석했습니다.",
-          },
-          {
-            title:
-              "TRANSITION\nFREQUENCY",
-            text: "시선이 한 지점에서 다른 지점으로 자주 이동하는지",
-          },
-          {
-            title: "FIXATION TIME",
-            text: "한 지점에 머무르는 평균 시간",
-          },
-          {
-            title: "ZONE DIVERSITY",
-            text: "화면을 여러 영역으로 나누었을 때 다양한 영역을 탐색했는지",
-          },
-        ]}
-      />
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <Sec5
+          bgImage={bgCluster1}
+          heatmap={visual2.heatmap}
+          circleColor="rgba(189, 189, 189, 0.54)" // 원 색⋅투명도 변경 가능
+          texts={[
+            "Color Selection",
+            colorTextMap[userColor] ||
+              "당신의 시선이 향한 곳은..",
+          ]}
+        />
+      </div>
 
-      <Sec5
-        bgImage={bgCluster1}
-        heatmap={visual2.heatmap}
-        circleColor="rgba(189, 189, 189, 0.85)" // 원 색⋅투명도 변경 가능
-        texts={[
-          "Color Selection",
-          "당신의 감정을 나타내는 색상은 불멸, 순수, 자존과 순결을 상징하는 “흰색“ 입니다",
-        ]}
-      />
-
-      <Sec5
-        bgImage={bgCluster2}
-        heatmap={visual3.heatmap}
-        circleColor="rgba(189, 189, 189, 0.85)" // 원 색⋅투명도 변경 가능
-        texts={[
-          "Color Selection",
-          "당신의 감정을 나타내는 색상은 불멸, 순수, 자존과 순결을 상징하는 “흰색“ 입니다",
-        ]}
-      />
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <Sec5
+          bgImage={bgCluster2}
+          heatmap={visual3.heatmap}
+          circleColor="rgba(189, 189, 189, 0.85)" // 원 색⋅투명도 변경 가능
+          texts={[
+            "INNER KEYWORD",
+            keywordTextMap[
+              userKeyword
+            ] ||
+              "당신의 시선이 향한 곳은..",
+          ]}
+        />
+      </div>
 
       {/* Section 1: Short section with a single word */}
-      <section className="sec6">
-        <span className="sec6__label">
-          Unconscious Self
-        </span>
+      <section className="sec1">
+        <div className="X_slide">
+          {slideText}
+        </div>
       </section>
 
       <Sec7 title="BLOOMING DESIRE">
-        관람객의{" "}
-        <strong>
-          시선에 따라 내면의 감정과
-          욕망이
-        </strong>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          관람객의{" "}
+          <strong>
+            시선에 따라 내면의 감정과
+            욕망이
+          </strong>
+          <br />
+          <strong>
+            꽃의 형상으로 피어나는
+          </strong>
+          인터랙티브 미디어아트
+          <br />
+          당신이 무심코 머문 시선
+          하나가,
+          <br />
+          내면의 감정을 깨우고 하나의
+          꽃을 피웁니다.
+          <br />
+          각기 다른 색과 형태로 피어나는
+          꽃은
+          <br />
+          단순한 아름다움을 넘어,
+          <br />{" "}
+          <strong>
+            우리 안에 자리한 자아의
+            진실과 욕망을 상징
+          </strong>
+          합니다.
+        </div>
         <br />
-        <strong>
-          꽃의 형상으로 피어나는
-        </strong>
-        인터랙티브 미디어아트
+        <div
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          마치 자신을 바라보다 물속으로
+          빠져든 나르키소스처럼,
+          <br />
+          <strong>
+            &lt;&lt;Blooming
+            Desire&gt;&gt;
+          </strong>{" "}
+          는 당신에게 묻습니다.
+        </div>
         <br />
-        당신이 무심코 머문 시선 하나가,
-        <br />
-        내면의 감정을 깨우고 하나의 꽃을
-        피웁니다.
-        <br />
-        각기 다른 색과 형태로 피어나는
-        꽃은
-        <br />
-        단순한 아름다움을 넘어,
-        <br />{" "}
-        <strong>
-          우리 안에 자리한 자아의 진실과
-          욕망을 상징
-        </strong>
-        합니다.
-        <br />
-        <br />
-        마치 자신을 바라보다 물속으로
-        빠져든 나르키소스처럼,
-        <br />
-        <strong>
-          Blooming Desire
-        </strong>{" "}
-        는 당신에게 묻습니다.
-        <br />
-        <br />{" "}
-        <strong>
-          지금, 당신의 시선은 어떤
-          감정을 담은 꽃으로 피어났나요?
-        </strong>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <strong>
+            지금, 당신의 시선은 어떤
+            감정을 담은 꽃으로
+            피어났나요?
+          </strong>
+        </div>
       </Sec7>
 
-      <Sec9
-        bgImage={bg01}
-        texts={[
-          "01",
-          "시선 기반 인터랙션",
-          "관람객의 ‘시선’을 추적하여 시각적 요소에 직접 영향을 주는 인터랙티브 미디어아트 작품입니다.",
-        ]}
-      />
-      <Sec9
-        bgImage={bg02}
-        texts={[
-          "02",
-          "욕망이라는 감정의 탐색",
-          "작품은 자기애, 욕망, 진실된 내면을 중심으로 구성되며, 인간 내면의 복잡한 감정과 마주하게 합니다.",
-        ]}
-      />
-      <Sec9
-        bgImage={bg03}
-        texts={[
-          "03",
-          "꽃을 통한 내면의 시각화",
-          "작품은 자기애, 욕망, 진실된 내면을 중심으로 구성되며, 인간 내면의 복잡한 감정과 마주하게 합니다.",
-        ]}
-      />
-      <Sec9
-        bgImage={bg04}
-        texts={[
-          "04",
-          "몰입적이고 시적인 영상 경험",
-          "그리스 신화 나르키소스를 모티프로 한 서사적 전개와 상징적 이미지가 몰입감을 줍니다.",
-        ]}
-      />
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <Sec9
+          bgImage={bg01}
+          texts={[
+            "01",
+            "시선 기반 인터랙션",
+            "관람객의 ‘시선’을 추적하여 시각적 요소에 직접 영향을 주는 인터랙티브 미디어아트 작품입니다.",
+          ]}
+        />
+      </div>
 
-      <div className="app-container">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <Sec9
+          bgImage={bg02}
+          texts={[
+            "02",
+            "욕망이라는 감정의 탐색",
+            "작품은 자기애, 욕망, 진실된 내면을 중심으로 구성되며, 인간 내면의 복잡한 감정과 마주하게 합니다.",
+          ]}
+        />
+      </div>
+
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <Sec9
+          bgImage={bg03}
+          texts={[
+            "03",
+            "꽃을 통한 내면의 시각화",
+            "작품은 자기애, 욕망, 진실된 내면을 중심으로 구성되며, 인간 내면의 복잡한 감정과 마주하게 합니다.",
+          ]}
+        />
+      </div>
+
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <Sec9
+          bgImage={bg04}
+          texts={[
+            "04",
+            "몰입적이고 시적인 영상 경험",
+            "그리스 신화 나르키소스를 모티프로 한 서사적 전개와 상징적 이미지가 몰입감을 줍니다.",
+          ]}
+        />
+      </div>
+      <div
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
         {/* …다른 섹션들… */}
         <Sec10
           bgImage={bgEnding}

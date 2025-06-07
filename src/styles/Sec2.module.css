@@ -30,14 +30,14 @@
 /* mainLine 스타일 */
 .mainLine {
   font-size: 18px;
-  font-weight: 350;
+  font-weight: 450;
   color: #fff;
 }
 
 /* subLine 스타일 (위 간격만 살짝 남기고 싶으면 margin-top만) */
 .subLine {
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 400;
   color: #ccc;
 }
 

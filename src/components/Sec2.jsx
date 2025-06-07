@@ -45,11 +45,11 @@ export default function Sec2({
 
     const data = {
       labels: [
-        "Fixation Time",
-        "Fixation Count",
-        "Dispersion",
-        "Transition Freq",
-        "Zone Diversity",
+        "FIXATION TIME",
+        "FIXATION COUNT",
+        "DISPERSION",
+        "TRANSITION FREQUENCY",
+        "ZONE DIVERSITY",
       ],
       datasets: [
         {
@@ -76,7 +76,7 @@ export default function Sec2({
       scales: {
         r: {
           pointLabels: {
-            font: { size: 12 },
+            font: { size: 10 },
             color: "#fff",
           },
           grid: {
@@ -86,6 +86,7 @@ export default function Sec2({
               "#3a3a3a",
               "#4a4a4a",
               "#5a5a5a",
+              "#4a4a4a",
             ],
           },
           angleLines: { color: "#888" },

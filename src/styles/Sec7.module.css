@@ -20,19 +20,19 @@
 }
 
 .underline {
-  width: 250px; /* 선 길이 */
+  width: 300px; /* 선 길이 */
   height: 0.3px; /* 선 두께 */
   background: #fff;
   margin: 1vh auto 3vh; /* 위아래 여백 */
 }
 
 .content {
-  font-size: 12px;
-  line-height: 3.5;
+  font-size: 14px;
+  line-height: 3.2;
   white-space: pre-line; /* \n 도 줄바꿈으로 처리 (선택) */
 }
 
 /* <strong> 태그에만 볼드 */
 .content strong {
-  font-weight: 450;
+  font-weight: 500;
 }

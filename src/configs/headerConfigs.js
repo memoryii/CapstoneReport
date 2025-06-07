@@ -180,8 +180,8 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "SHAKER",
+            "Cognitive Load",
           ],
           style: {
             bottom: "35%",
@@ -208,7 +208,7 @@ export function getHeaderConfig(
                 }
               >
                 Your Unconscious is “
-                {unconsciousTitle}”
+                Scatter Mind”
               </h3>
               <p
                 className={
@@ -218,12 +218,14 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 섬세한 반응과,
+                  강렬한 에너지 그리고
+                  적극적인 변화가 있는
+                  응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
                 진실된 꽃은,
-                <br />
                 <strong>
                   {colorPhrase}의 활기찬
                   튤립
@@ -257,16 +259,16 @@ export function getHeaderConfig(
           content: color,
           className: "FlowerType",
           style: {
-            bottom: "23%",
-            left: "7%",
+            bottom: "45%",
+            left: "6%",
           },
         },
         {
-          content: "Tulip",
+          content: "Hellebore",
           className: "FlowerType",
           style: {
-            bottom: "23%",
-            right: "6%",
+            bottom: "37%",
+            left: "6%",
           },
         },
         // ─────────────────────────────────────────────────────
@@ -275,11 +277,11 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "WANDERER",
+            "Empathic Engagement",
           ],
           style: {
-            bottom: "35%",
+            bottom: "33%",
             left: "7%",
 
             borderLeft:
@@ -303,7 +305,7 @@ export function getHeaderConfig(
                 }
               >
                 Your Unconscious is “
-                {unconsciousTitle}”
+                Deep Sync”
               </h3>
               <p
                 className={
@@ -313,15 +315,16 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 감정적 반응과,
+                  내면의 집중 그리고
+                  지속되는 응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
                 진실된 꽃은,
-                <br />
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의 고고한
+                  헬레보어
                 </strong>
                 입니다.
               </p>
@@ -370,8 +373,8 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "PRECISIONER",
+            "Feature Integration Theory",
           ],
           style: {
             bottom: "27%",
@@ -397,8 +400,8 @@ export function getHeaderConfig(
                   styles.descTitle
                 }
               >
-                Your Unconscious is “
-                {unconsciousTitle}”
+                Your Unconscious is
+                “Pattern Hunter”
               </h3>
               <p
                 className={
@@ -408,15 +411,16 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 논리적 반응과,
+                  높은 판단력 그리고
+                  목표 지향적인 응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
-                진실된 꽃은,
-                <br />
+                진실된 꽃은,{" "}
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의 강인한
+                  칼라릴리
                 </strong>
                 입니다.
               </p>
@@ -465,12 +469,12 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "FOCALIZER",
+            "Selective Attention",
           ],
           style: {
             top: "17%",
-            right: "5%",
+            right: "6%",
 
             borderLeft:
               "1px solid #fff",
@@ -493,7 +497,7 @@ export function getHeaderConfig(
                 }
               >
                 Your Unconscious is “
-                {unconsciousTitle}”
+                Focus Flame”
               </h3>
               <p
                 className={
@@ -503,15 +507,16 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 몰입력과 분석적인
+                  사고, 그리고 고정되는
+                  응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
-                진실된 꽃은,
-                <br />
+                진실된 꽃은,{" "}
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의 고요한
+                  아이리스
                 </strong>
                 입니다.
               </p>
@@ -560,12 +565,12 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "SCANNER",
+            "Sensory Harmony",
           ],
           style: {
             top: "22%",
-            right: "6%",
+            right: "7%",
 
             borderLeft:
               "1px solid #fff",
@@ -587,8 +592,8 @@ export function getHeaderConfig(
                   styles.descTitle
                 }
               >
-                Your Unconscious is “
-                {unconsciousTitle}”
+                Your Unconscious is
+                “Wave Gazer”
               </h3>
               <p
                 className={
@@ -598,15 +603,16 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 관찰적 반응과,
+                  열려있는 감각 그리고
+                  유독적인 응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
                 진실된 꽃은,
-                <br />
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의
+                  부드러운 라넌큘러스
                 </strong>
                 입니다.
               </p>
@@ -656,12 +662,12 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "COLLECTOR",
+            "Reflective Processing",
           ],
           style: {
             top: "16%",
-            right: "6%",
+            right: "7%",
 
             borderLeft:
               "1px solid #fff",
@@ -684,7 +690,7 @@ export function getHeaderConfig(
                 }
               >
                 Your Unconscious is “
-                {unconsciousTitle}”
+                Snap Click”
               </h3>
               <p
                 className={
@@ -694,15 +700,16 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 탐구적인 반응과,
+                  탐색적 사고 그리고
+                  통합적인 응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
-                진실된 꽃은,
-                <br />
+                진실된 꽃은,{" "}
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의 지적인
+                  국화
                 </strong>
                 입니다.
               </p>
@@ -751,8 +758,8 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "RECALLER",
+            "Emotional Aversion",
           ],
           style: {
             top: "27%",
@@ -779,7 +786,7 @@ export function getHeaderConfig(
                 }
               >
                 Your Unconscious is “
-                {unconsciousTitle}”
+                Skip Trace”
               </h3>
               <p
                 className={
@@ -789,15 +796,16 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 신중한 반응과,
+                  심층적인 몰입 그리고
+                  일관된 응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
-                진실된 꽃은,
-                <br />
+                진실된 꽃은,{" "}
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의
+                  조화로운 프리지아
                 </strong>
                 입니다.
               </p>
@@ -846,8 +854,8 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "SEEKER",
+            "Global Attention",
           ],
           style: {
             top: "27%",
@@ -874,7 +882,7 @@ export function getHeaderConfig(
                 }
               >
                 Your Unconscious is “
-                {unconsciousTitle}”
+                Glove Seeker”
               </h3>
               <p
                 className={
@@ -884,15 +892,16 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 감각적 반응과,
+                  높은 탐색력 그리고
+                  포괄적인 응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
-                진실된 꽃은,
-                <br />
+                진실된 꽃은,{" "}
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의
+                  자유로운 수국
                 </strong>
                 입니다.
               </p>
@@ -901,7 +910,7 @@ export function getHeaderConfig(
           style: {
             position: "absolute",
             bottom: "20%",
-            left: "12%",
+            left: "1%",
             right: "5%",
             textAlign: "right",
           },
@@ -941,12 +950,12 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "ISOLATOR",
+            "Attention Deficit",
           ],
           style: {
             top: "11%",
-            left: "3%",
+            left: "7%",
 
             borderLeft:
               "1px solid #fff",
@@ -969,7 +978,7 @@ export function getHeaderConfig(
                 }
               >
                 Your Unconscious is “
-                {unconsciousTitle}”
+                Wind Blind”
               </h3>
               <p
                 className={
@@ -979,15 +988,16 @@ export function getHeaderConfig(
                 짧은 순간, 당신의 시선이
                 보여준 것은{" "}
                 <strong>
-                  {descText}
+                  깊은 유동적인 반응과,
+                  내면의 열림 그리고
+                  탐색적인 응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
-                진실된 꽃은,
-                <br />
+                진실된 꽃은,{" "}
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의
+                  창의적인 아네모네
                 </strong>
                 입니다.
               </p>
@@ -1036,8 +1046,8 @@ export function getHeaderConfig(
         {
           // 배열로 넘기면 자동으로 h2/mainLine/subLine 처리
           content: [
-            mainLineText,
-            subLineText,
+            "CALMER",
+            "Cognitive Dissonance",
           ],
           style: {
             top: "29%",
@@ -1064,7 +1074,7 @@ export function getHeaderConfig(
                 }
               >
                 Your Unconscious is “
-                {unconsciousTitle}”
+                Hesitant Loop”
               </h3>
               <p
                 className={
@@ -1072,17 +1082,18 @@ export function getHeaderConfig(
                 }
               >
                 짧은 순간, 당신의 시선이
-                보여준 것은{" "}
+                보여준 것은
                 <strong>
-                  {descText}
+                  깊은 감성적 반응과,
+                  내면의 몰입 그리고
+                  신중한 응시
                 </strong>
                 였습니다. 그에 따라,
                 당신의 내면에서 피어난
-                진실된 꽃은,
-                <br />
+                진실된 꽃은,{" "}
                 <strong>
-                  {colorPhrase}의 활기찬
-                  튤립
+                  {colorPhrase}의 섬세한
+                  델피늄
                 </strong>
                 입니다.
               </p>

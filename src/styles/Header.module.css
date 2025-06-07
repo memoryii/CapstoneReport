@@ -33,13 +33,24 @@
 
 /* 둘째 줄 스타일 (“Result Report”) */
 .topSecondary {
+  display: inline-block;
   margin: 0;
   font-family: "Roboto", sans-serif; /* 원하는 폰트로 교체 */
   font-size: 10px; /* 필요에 따라 조정 */
   font-weight: 300;
-  color: #ccc;
+  color: #ffffff;
   line-height: 1;
   margin-top: 0.25rem;
+
+  /* 아래부터 배경 & 둥근 모서리를 위한 속성 */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.304
+  ); /* 반투명 회색(예시) */
+  padding: 2px 8px; /* 위아래 2px, 좌우 8px 정도 여유 공간 */
+  border-radius: 12px; /* 모서리를 둥글게 (높이의 절반 이상 주면 완전 pill 형태) */
 }
 
 .textBox {
@@ -91,10 +102,12 @@
   position: absolute; /* 기존 .textBox처럼 절대위치 */
   /* inline style에서 top/left/right/bottom 조정 */
   line-height: 1.4;
+  white-space: nowrap;
 }
 
 .descTitle {
   margin: 0;
+  padding: 0 1rem;
   font-size: 25px;
   font-family: "Libre Caslon Display",
     serif;
@@ -105,9 +118,12 @@
 
 .descText {
   margin: 0.5rem 0 0;
-  font-size: 10px;
-  font-weight: 300;
-  color: #ccc;
+  /* 좌우로 안쪽 여백 1rem 추가 */
+  padding: 0 1rem;
+
+  font-size: 11px;
+  font-weight: 350;
+  color: #ffffff;
   line-height: 1.6;
   white-space: normal;
 }

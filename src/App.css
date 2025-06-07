@@ -64,11 +64,41 @@ section {
 
 /* Section 1 & Section 6: short height, centered content */
 .sec1 {
-  font-size: 45px;
-  font-weight: 500;
+  overflow: hidden;
+  width: 100%;
+}
+
+.X_slide {
+  display: inline-block; /* 텍스트 너비만큼만 차지되도록 */
+  white-space: nowrap; /* 한 줄로만 표시(줄바꿈 방지) */
+  color: #fff; /* 예시로 흰색 글씨 */
+  font-size: 45px; /* 원하는 크기로 조정 */
   padding-bottom: 2vh;
   padding-top: 2vh;
-  align-items: center;
+  font-weight: 500;
+
+  /* 시작 위치: 마지막 글자만 보이도록 calc 설정 */
+  transform: translateX(
+    100%
+  ); /* 왼쪽으로 이동, 오른쪽 이동 시:translateX의 값을 전부 반대로*/
+
+  /* 애니메이션 적용 */
+  animation: scroll-left 10s linear
+    infinite;
+}
+
+/* 좌에서 우로 이동하는 keyframes 정의
+   from: 화면 왼쪽 바깥(= -100%),
+   to:   화면 오른쪽 바깥(= 100% + 너비)
+   → 텍스트의 너비만큼 추가로 넘어서 롤링하도록 계산 */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* sec6 전체는 오른쪽 끝 정렬 + 위아래 여백만 */
